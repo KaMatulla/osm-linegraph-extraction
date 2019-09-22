@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>OSM to GeoJSON</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico"/>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts/css/font-awesome.css">
+    <link href="css/app.css" rel="stylesheet" media="screen">
+    <link href="css/sidebar.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+</head>
+<body>
+
+    <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="medianav nav navbar-nav">
+                    <li>
+                        <a class="linkcol" href="concepts.html">Concepts</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="results.html">Results</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse" style="">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="">Home</a>
+                    </li>
+                    <li>
+                        <a href="concepts.html">Concepts</a>
+                    </li>
+                    <li>
+                        <a href="results.html">Results</a>
+                    </li>
+                    <li>
+                        <a href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-4 col-md-3">
+                    <div class="bs-side panel-group">
+
+                        <div class="panel panel-primary">
+
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                        HOME
+                                </h4>
+                            </div>
+
+                            <div class="panel-body bs-sidebar">
+                                <ul class="nav nav-pills nav-stacked bs-sidenav">
+                                    <li title="Overview">
+                                        <span>Overview</span>
+                                        <ul class="nav">
+                                            <li title="The Task">
+                                                <a class="bs-a" href="#overview"> Project Description</a>
+                                            </li>
+                                            <li title="Usage">
+                                                <a class="bs-a" href="#usage"> Usage</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-8 col-md-9 documentation">
+
+                    <h1 id="javascript-tracking-client">Extraction of Public Transport Linegraphs from OpenStreetMap</h1>
+
+                    <p>Bachelor Project by Katharina Matulla</p>
+                    <p>Supervision by <a class="doca" href="https://ad.informatik.uni-freiburg.de/staff/brosi" target="_blank">Patrick Brosi</a></p>
+                    <p>
+                        University of Freiburg<br>
+                        Department of Computer Science<br>
+                        <a class="doca" href="https://ad.informatik.uni-freiburg.de/front-page-en?set_language=en" target="_blank">Chair of Algorithms and Data Structures</a>
+                    </p>
+
+
+                    <h2 id="overview">Overview</h2>
+                    <p><strong>Project Description</strong></p>
+
+                    <p>
+                        Goal of this project is to extract public transport data from OpenStreetMap (OSM) of a specific
+                        public transport system (tram or subway) within a given region, to adjust the data and to save
+                        it in a geoJSON file. The adjustments include merging all nodes of one station into one middle
+                        station, connecting the new merged stations with the ways and merging the ways (and accordingly the line numbers
+                        of the transportation system) connecting the stations, so that only one line runs between a set of two stations.
+                    </p>
+
+                    <p>The result of this work could be used to render transitmaps as overlays and thus should be similar to
+                        <a class="doca" href="http://loom.informatik.uni-freiburg.de/#stuttgart" target="_blank">LOOM</a>
+                        (Line-Ordering Optimized Maps), which is generated using GTFS-data.<a class="reflink" id="cite-ref-1" href="references.html#ref-1">[1]</a><br>
+                        Since this project only takes data from OpenStreetMap, linearized maps could be generated even if GTFS-data of
+                        cities aren't available.</p>
+                    <p id="usage"><strong>Usage</strong></p>
+                    <p>All of the following options are required to run the program:</p>
+                    <p>python3 osm_to_geojson.py</p>
+                    --min_lon: &lt;float&gt;<br>
+                    --min_lat: &lt;float&gt;<br>
+                    --max_lon: &lt;float&gt;<br>
+                    --max_lat: &lt;float&gt;<br>
+                    --xml_file: &lt;string&gt; (osm-filename)<br>
+                    --transport_vehicle: &lt;string&gt; (has to be 'tram' or 'subway')<br>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p class="pull-right">
+                    <a href="mailto:katharina.matulla@tutanota.com">Contact</a>&nbsp;|&nbsp;2019
+                </p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+    </body>
+</html>

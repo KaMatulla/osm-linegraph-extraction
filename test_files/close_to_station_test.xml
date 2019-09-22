@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.6.1 (2512 thorn-01.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <bounds minlat="0" minlon="0" maxlat="10" maxlon="10"/>
+ <node id="1" lat="5" lon="5">
+  <tag k="name" v="test_station"/>
+  <tag k="public_transport" v="stop_position"/>
+  <tag k="tram" v="yes"/>
+ </node> 
+ </osm>

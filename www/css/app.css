@@ -1,0 +1,340 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    padding-top: 80px;
+    margin-bottom: 80px;
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Cantarell, "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    color: #333333;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-top: 1px solid #dfdfdf;
+    font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Arial, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+p {
+    margin: 0 0 15px;
+}
+
+a {
+    color: #1976D2;
+}
+
+hr {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+th {
+
+    border: 1px solid black;
+    background-color: grey;
+    color: white;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.5);
+}
+
+td {
+    border: 1px solid #8a8989;
+    border-collapse: collapse;
+    font-size: 13px;
+}
+
+th, td {
+  padding: 5px;
+}
+
+td {
+  text-align: left;
+}
+
+th {
+    text-align: center;
+}
+
+ol {
+    padding: inherit;
+}
+
+.panel-primary li.active > a, .panel-primary li.active > a:hover, .panel-primary li.active > a:focus {
+    color: #1976D2 !important;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    color: #00a6f7 !important;
+}
+
+/* Active navbar item color */
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+    color: #2faadd;
+}
+
+.navbar-header {
+    display: none;
+}
+
+.bs-a:hover {
+    background-color: #e6e8e9 !important;
+}
+
+.documentation {
+    line-height: 150%;
+    margin-bottom: 50px;
+}
+
+.documentation h1 {
+    font-weight: 300;
+    padding-bottom: 9px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.documentation h2 {
+    font-size: 28px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.doca {
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.documentation a:hover {
+    text-decoration: none;
+}
+
+.documentation img {
+    max-width: 100%;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    padding: 5px;
+    background-color: #f9f9f9;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.panel-group .panel {
+    margin-bottom: 20px;
+}
+
+/* Customize all "primary" panels */
+.panel-primary {
+    border: 1px solid #d0d0d0;
+    box-shadow: 0 0 5px #d0d0d0;
+    background-color: #f0f0f0;
+}
+.panel-primary > .panel-heading {
+    background-color: #d0d0d0;
+    color: #8a8989;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+.panel-primary li.active > a, .panel-primary li.active > a:hover, .panel-primary li.active > a:focus {
+    font-weight: bold !important;
+    color: #246998;
+    background-color: transparent;
+}
+
+
+/* First level of nav */
+.bs-sidenav {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* All levels of nav */
+.bs-sidebar .nav > li > a, .bs-sidebar .nav > li > span {
+    display: block;
+    padding: 5px 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+}
+
+.bs-sidebar .nav-pills > li > a {
+    border-radius: 0;
+}
+
+/* Nav: second level */
+.bs-sidebar .nav .nav {
+    margin-bottom: 10px;
+}
+.bs-sidebar .nav .nav > li > a {
+    padding-top:    3px;
+    padding-bottom: 3px;
+    padding-left: 25px;
+    font-size: 90%;
+    font-weight: normal;
+}
+
+.bs-side .panel-body {
+    padding:0;
+}
+.panel-body a, .panel-body a:hover, .panel-body a:focus {
+    color: #2c3e50;
+}
+
+.osmimgcon_1, .osmimgcon_2, .osmimgcon_3{
+    display: flex;
+}
+
+.imgresult{
+    display: flex;
+
+}
+.tablediv{
+    display: flex;
+    justify-content: center;
+}
+
+.osmimgcon_1, .osmimgcon_2, .osmimgcon_3 {
+    max-height: 250px;
+}
+
+.osmimgres {
+    max-height: 300px;
+}
+
+.firstgallery, .secondgallery, .thirdgallery {
+    display: flex;
+    justify-content: space-around;
+}
+
+.firstgallery, .secondgallery, .thirdgallery  >  * {
+    flex: 1 1 0;
+}
+
+.flex_caption {
+    display: flex;
+    justify-content: center;
+    color: #333333 !important;
+    font-size: 12px;
+}
+
+.flex_caption {
+    color: #333333 !important;
+    cursor: default;
+    text-decoration: none;
+}
+
+.res_desc {
+    text-align: right;
+}
+
+.res_description {
+    text-align: left;
+
+}
+.flex_results {
+    display: flex;
+    justify-content: space-around;
+}
+
+.res_child1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 300px;
+}
+
+.res_child2 {
+    max-width: 400px;
+}
+
+.reflink {
+    font-size: 12px;
+    position: relative;
+    vertical-align: baseline;
+    border-bottom: none;
+    top: -5px;
+}
+
+.fa-long-arrow-up {
+    color: #527884;
+}
+.fa-long-arrow-up:hover {
+    color: #a0bb4f;
+}
+
+.dropdown-menu > li > a {
+    white-space: normal;
+}
+
+h2[id]:before, h3[id]:before {
+  content:"";
+  display:block;
+  padding-top:60px;
+  margin-top:-60px;
+}
+.medianav {
+    display: none;
+}
+
+.fancybox-button--share, .fancybox-button--play {
+    display: none !important;
+}
+
+
+@media (max-width: 992px) {
+    #menu {
+        font-size: 15px;
+    }
+    .navbar-header {
+        display: block;
+    }
+    .medianav {
+        margin-top: 50px;
+    }
+    .linkcol {
+        text-align: right;
+        margin-right: 5px;
+    }
+    .linkcol:hover {
+        color: #00a6f7 !important;
+    }
+
+    .navbar-header:hover .medianav {
+        display: block;
+        text-align: left;
+    }
+
+    .flex_results {
+        display: block;
+    }
+
+}
+@media (max-width: 600px) {
+    .osmimgcon_1, .osmimgcon_2, .osmimgcon_3,.imgresult, .tablediv,
+    .firstgallery, .secondgallery, .thirdgallery, .res_child1
+     {
+        display: block;
+    }
+    h1 {
+        font-size: 30px;
+    }
+    .navbar-header {
+        display: block;
+    }
+}

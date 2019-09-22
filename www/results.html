@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>OSM to GeoJSON</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico"/>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts/css/font-awesome.css">
+    <link href="css/app.css" rel="stylesheet" media="screen">
+    <link href="css/sidebar.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+</head>
+<body>
+
+    <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="medianav nav navbar-nav">
+                    <li>
+                        <a class="linkcol" href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="concepts.html">Concepts</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse" style="">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="concepts.html">Concepts</a>
+                    </li>
+                    <li class="active">
+                        <a href="">Results</a>
+                    </li>
+                    <li>
+                        <a href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-4 col-md-3">
+                <div class="bs-side panel-group">
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a href="">
+                                    RESULTS
+                                </a>
+                            </h4>
+                        </div>
+
+                        <div class="panel-body bs-sidebar">
+                            <ul class="nav nav-pills nav-stacked bs-sidenav">
+                                <li>
+                                    <span>Results</span></span>
+                                    <ul class="nav">
+                                        <li title="Freiburg">
+                                            <a class="bs-a" href="#freiburg"> Freiburg (tram)</a>
+                                        </li>
+                                        <li title="Stuttgart">
+                                            <a class="bs-a" href="#stuttgart"> Stuttgart (tram)</a>
+                                        </li>
+                                        <li title="Munich">
+                                            <a class="bs-a" href="#munich"> Munich (subway)</a>
+                                        </li>
+                                        <li title="Chicago">
+                                            <a class="bs-a" href="#chicago"> Chicago (subway)</a>
+                                        </li>
+                                        <li title="Paris">
+                                            <a class="bs-a" href="#paris"> Paris (subway)</a>
+                                        </li>
+                                        <li title="London">
+                                            <a class="bs-a" href="#london"> London (subway)</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-9 documentation">
+
+                <h1 id="javascript-tracking-client">Extraction of Public Transport Linegraphs from OpenStreetMap</h1>
+
+                <p></p>
+
+                <h2>Results</h2>
+
+                <gallery class="resultgallery">
+                    <p id="freiburg"><strong>Freiburg</strong></strong></p>
+                    <div class="flex_results">
+                        <div class="res_child1">
+                            <p>Tram Linegraph of Freiburg with OSM-data of October 2018.</p>
+                        </div>
+                        <div class="res_child2">
+                            <a data-fancybox="gallery_res" data-caption="Tram Linegraph of Freiburg with OSM-data of October 2018" href="img/freiburg_2018.jpg"><img class="osmimgres" src="img/freiburg_2018_small.jpg" alt="result-freiburg-2018"></a>
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="flex_results">
+                        <div class="res_child1">
+                            <p>Tram Linegraph from Freiburg with OSM-data of January 2019. New tram ways are not holding
+                                the construction tag anymore.</p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Tram Linegraph from Freiburg with OSM-data of January 2019" href="img/freiburg_2019.jpg"><img class="osmimgres" src="img/freiburg_2019_small.jpg" alt="result-freiburg-2019"></a>
+                            </div>
+                        </div>
+
+
+                        <hr>
+                        <p id="stuttgart" class="addpadding"><strong>Stuttgart</strong></strong></p>
+                        <div class="flex_results">
+                            <div class="res_child1">
+                                <p>Tram Linegraph of Stuttgart with OSM-data of October 2018.</p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Tram Linegraph of Stuttgart with OSM-data of October 2018." href="img/stuttgart_2018.jpg"><img class="osmimgres" src="img/stuttgart_2018_small.jpg" alt="result-stuttgart"></a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p id="munich" class="addpadding"><strong>Munich</strong></strong></p>
+                        <div class="flex_results">
+                            <div class="res_child1">
+                                <p>
+                                    Subway Linegraph of Munich with OSM-data of January 2019.
+                                    Some nodes are found, but not connected through ways. One reason for this is,
+                                    that the nodes are (wrongly) classified as subway nodes while they truly
+                                    belong to a tram system.
+                                </p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Subway Linegraph of Munich with OSM-data of January 2019." href="img/munich_2019.jpg"><img class="osmimgres" src="img/munich_2019_small.jpg" alt="result-munich"></a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p id="chicago" class="addpadding"><strong>Chicago</strong></strong></p>
+                        <div class="flex_results">
+                            <div class="res_child1">
+                                <p>
+                                    Subway Linegraph of Chicago with OSM-data of January 2019.
+                                    The quality of this result is low (stations are not connected and are at the wrong position).
+                                    This shows that the usage of more advanced methods to include the stations
+                                    in ways and find the ways between them, would benefit
+                                    the result quality.<a class="reflink" id="cite-ref-2" href="references.html#ref-2">[2]</a>
+                                </p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Subway Linegraph of Chicago with OSM-data of January 2019." href="img/chicago_2019.jpg"><img class="osmimgres" src="img/chicago_2019_small.jpg" alt="result-chicago"></a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p id="paris" class="addpadding"><strong>Paris</strong></strong></p>
+                        <div class="flex_results">
+                            <div class="res_child1">
+                                <p>Subway Linegraph of Paris with OSM-data of January 2019.</p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Subway Linegraph of Paris with OSM-data of January 2019." href="img/paris_2019.jpg"><img class="osmimgres" src="img/paris_2019_small.jpg" alt="result-paris"></a>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <p id="london" class="addpadding"><strong>London</strong></strong></p>
+                        <div class="flex_results">
+                            <div class="res_child1">
+                                <p>Subway Linegraph of London with OSM-data of January 2019.</p>
+                            </div>
+                            <div class="res_child2">
+                                <a data-fancybox="gallery_res" data-caption="Subway Linegraph of London with OSM-data of January 2019." href="img/london_2019.jpg"><img class="osmimgres" src="img/london_2019_small.jpg" alt="result-paris"></a>
+                            </div>
+                        </div>
+                    </gallery>
+
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <div class="container">
+                <p class="pull-right">
+                    <a href="mailto:katharina.matulla@tutanota.com">Contact</a>&nbsp;|&nbsp;2019
+                </p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+    </body>
+</html>

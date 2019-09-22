@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>OSM to GeoJSON</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico"/>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/fonts/css/font-awesome.css">
+    <link href="css/app.css" rel="stylesheet" media="screen">
+    <link href="css/sidebar.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css">
+</head>
+<body>
+
+    <div id="menu" class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <ul class="medianav nav navbar-nav">
+                    <li>
+                        <a class="linkcol" href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="results.html">Results</a>
+                    </li>
+                    <li>
+                        <a class="linkcol" href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse" style="">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="active">
+                        <a href="">Concepts</a>
+                    </li>
+                    <li>
+                        <a href="results.html">Results</a>
+                    </li>
+                    <li>
+                        <a href="references.html">References</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-4 col-md-3">
+                <div class="bs-side panel-group">
+
+                    <div class="panel panel-primary">
+
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                    CONCEPTS
+                            </h4>
+                        </div>
+
+                        <div class="panel-body bs-sidebar">
+                            <ul class="nav nav-pills nav-stacked bs-sidenav">
+                                <li>
+                                    <span>Implementation Aspects</span></span>
+                                    <ul class="nav">
+                                        <li title="Extract Relevant Data">
+                                            <a class="bs-a" href="#rel-data"> Extraction of Relevant Data</a>
+                                        </li>
+                                        <li title="Include Stations in Line">
+                                            <a class="bs-a" href="#include-stations"> Including Stations in Ways</a>
+                                        </li>
+                                        <li title="Connect Stations">
+                                            <a class="bs-a" href="#connect-stations"> Connecting Stations through Ways</a>
+                                        </li>
+                                        <li title="Merge Lines">
+                                            <a class="bs-a" href="#merge-lines"> Merging Ways between Stations</a>
+                                        </li>
+                                        <li title="Line Number Improvements">
+                                            <a class="bs-a" href="#ln-impr"> Improvements of Line Numbers</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-8 col-md-9 documentation">
+
+                <h1 id="javascript-tracking-client">Extraction of Public Transport Linegraphs from OpenStreetMap</h1>
+
+                <p>The following selected aspects provide an overview of the ideas behind
+                    the implemented code and contribute to the transparency of the work and the results.
+                    The used concepts in this project are rather simple and mainly supposed to show the possibility
+                    of adjusting the osm-data in a specific way, especially for Freiburg, a city (operating a tram system) in
+                    south-west Germany.
+                    In order to get correct results with the tool for all cities, more advanced algorithms,
+                    which cover more osm-data and transport system conditions, might be beneficial.</p>
+
+                <h2 id="rel-data">Selected Implementation Aspects</h2>
+                <p><strong>Extraction of Relevant Data</strong></strong></p>
+
+                <p>
+                    To parse large osm(xml) files the lmxl.etree API for python is used.
+                </p>
+
+                <p>
+                    The following tags are considered to find the relevant nodes, ways and relations of a specified transport
+                    system in an osm file:<a class="reflink" id="cite-ref-3" href="references.html#ref-3">[3]</a><a class="reflink"id="cite-ref-4" href="references.html#ref-4">[4]</a>
+                </p>
+                <div class="tablediv">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>tram</th>
+                            <th>subway</th>
+                        </tr>
+                        <tr>
+                            <th>nodes</th>
+                            <td>
+                                k="tram"<br>
+                                v="tram_stop"
+                            </td>
+                            <td>
+                                k="station" and v="subway"<br>
+                                k="subway" and v="yes"
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>ways</th>
+                            <td>
+                                k="tram"<br>
+                                v="tram"<br>
+                                v="light_rail"<br>
+                            </td>
+                            <td>
+                                k="railway" and v="subway"
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>relations</th>
+                            <td>
+                                v="tram"
+                            </td>
+                            <td>
+                                k="route" and v="subway"
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <p>Furthermore the following tags are considered to either exclude objects or to gather additional
+                    information:<a class="reflink" id="cite-ref-5" href="references.html#ref-5">[5]</a><a class="reflink" id="cite-ref-6" href="references.html#ref-6">[6]</a><a class="reflink" id="cite-ref-7" href="references.html#ref-7">[7]</a>
+                </p>
+
+                <div class="tablediv">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>tram</th>
+                            <th>subway</th>
+                        </tr>
+                        <tr>
+                            <th>nodes</th>
+                            <td>
+                                k="construction"<br>
+                                k="historic:railway"
+                            </td>
+                            <td>
+                                k="construction"<br>
+                                k="historic:railway"
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>ways</th>
+                            <td>
+                                k="railway_switch" and v="no"<br>
+                                k="service" and v="siding"<br>
+                                k="historic"<br>
+                                k="construction"<br>
+                                v="construction"
+                            </td>
+                            <td>
+                                k="railway_switch" and v="no"<br>
+                                k="historic"<br>
+                                k="construction"<br>
+                                v="construction"
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>relations</th>
+                            <td>
+                                v="historic"
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <p></p>
+                <br>
+                <p id="include-stations"><strong>Including Stations in Ways</strong></p>
+
+                <p>The stations of the public transport systems are not by default included in the ways of OpenStreetMap data.
+                    Thus, after the different nodes of the stations are merged together to new center stations, the new center
+                    stations need to be included in the ways for the first time, in order to simplify merging the ways between the stations later.
+                    Since ways in OSM consist of ordered node lists, a simple distance measure could be used to check whether a station should
+                    be included in a way:
+                    Whenever a node of a way is close (e.g. within 40 metres) to one of the new stations,
+                    the station gets included in the way instead of the original node.
+                </p>
+
+                <gallery class="firstgallery">
+                    <a data-fancybox="gallery_1" data-caption="Map extract from OSM. Stations and ways are not connected by default." href="img/osm_station.jpg">
+                        <img class="osmimgcon_1"src='img/osm_station.jpg' alt='osm-map-extract'>
+                        <div class="flex_caption">Map extract from OSM. Stations and ways are not connected by default.</div>
+                    </a>
+                    <a data-fancybox="gallery_1" data-caption="The algorithm connects the station nodes and the ways." href="img/stations_to_lines.jpg">
+                        <img class="osmimgcon_1" src='img/stations_to_lines.jpg' alt='add-stations-to-lines'>
+                        <div class="flex_caption">The algorithm includes the station nodes in the ways.</div>
+                    </a>
+                </gallery>
+
+
+                <p></p>
+                <br>
+                <p id="connect-stations"><strong>Connecting Stations through Ways</strong></p>
+                <p>
+                    In order to further simplify merging the ways in the next step, the goal of this step is to create ways, which
+                    run from station to station, meaning that each ordered node list starts and ends with a station node
+                    at the end of this step.
+                    To achive this, every way containing station nodes is split at that station nodes, so that a station node
+                    is either at the beginning or the end of a way segment. Starting from a way segment with a station node at the beginning, a new way segment
+                    is added to a way in an iterative loop, if the last node id of the current way and the first node id of the new way
+                    segment match together. The loop terminates as soon as a way segment, which contains a station node at the end, is
+                    added, the way contains a switch node or no additional way segment can be found.
+                    This simple search already finds most of the ways, at least of the Freiburg sample data.
+                    <br><br>
+                    However, to also allow for ways to be found that are not constructed in that precise order,
+                    every way is also saved in the reverted direction and the loop can change between these sets of ways
+                    in between.
+                </p>
+                <p></p>
+
+                <p id="merge-lines"><strong>Merging Ways between Stations</strong></p>
+
+                <p>
+                    To merge all ways between stations, so that only one way exists between a set of two stations,
+                    the shortest way (or more precice: the way which consists of the minimum number of nodes) of all
+                    ways between two stations is filtered. For every node of this shortest way,  the closest nodes of
+                    the other ways are computed using a euclidean distance measure. Then one single new node is
+                    calculated at the center of those nodes to assure that the new way runs in the middle of the merged ways.
+                    <br><br>
+                    According to the merged ways the line numbers of the transport system are also merged and
+                    assigned to the resulting new line.
+                </p>
+
+                <gallery class="secondgallery">
+                    <a data-fancybox="gallery_2" data-caption="The ways running between a set of two stations should be merged." href="img/merge_lines.jpg">
+                        <img class="osmimgcon_2"src='img/merge_lines.jpg' alt='lines-need-merging'>
+                        <div class="flex_caption">The ways running between a set of two stations should be merged.</div>
+                    </a>
+                    <a data-fancybox="gallery_2" data-caption="The new merged ways run in the middle of the old ways." href="img/merged_lines.jpg">
+                        <img class="osmimgcon_2" src='img/merged_lines.jpg' alt='merged-lines'>
+                        <div class="flex_caption">The new merged ways run in the middle of the old ways.</div>
+                    </a>
+                </gallery>
+                <br>
+                <p></p>
+
+                <p id="ln-impr"><strong>Improvements of Line Numbers</strong></strong></p>
+                <p>Some quality improvements need to be made with regard to missing or wrong line numbers.
+                    Especially if ways split after crossroads, the line numbers aren’t splitted accordingly.
+                    Thus, a couple of existing line number conditions are checked and line numbers are
+                    either added or deleted. The conditions are easy to determine if stations on both sides of a way only
+                    have two incident egdes (ways). Then it's obvoius that the same line numbers should to be at both sides (ways)
+                    of a station. Since conditions get more complex, if stations have more than two incident edges (see the example below),
+                    a correct line numbering is only assured for a data set of Freiburg from October 2018.
+                </p>
+
+
+                <gallery class="thirdgallery">
+                    <a data-fancybox="gallery_3" data-caption="This shows the situation at the 'Bertoldsbrunnen',
+                        a tram station in Freiburg as a test case.
+                        The '2' (red circle) is impossible (or rather highly unlikely) and needs to be deleted.
+                        (A line number leaving a station three times (station e)
+                        and then stopping one station later ((station h), with only two incident edges) is considered unlikely."
+                        href="img/linenr_not_imp.jpg">
+                        <img class="osmimgcon_3" src="img/linenr_not_imp.jpg" alt="impossible-line-number">
+                        <div class="flex_caption">This shows the situation at the 'Bertoldsbrunnen',
+                        a tram station in Freiburg as a test case.
+                        The '2' (red circle) is impossible (or rather highly unlikely) and needs to be deleted.
+                        (A line number leaving a station three times (station e)
+                        and then stopping one station later ((station h), with only two incident edges) is considered unlikely.</div>
+                    </a>
+                    <a data-fancybox="gallery_3" data-caption="The unlikely line number is deleted." href="img/linenr_imp.jpg">
+                        <img class="osmimgcon_3" src="img/linenr_imp.jpg" alt="line-number-corrected">
+                        <div class="flex_caption">The unlikely line number is deleted.</div>
+                    </a>
+                </gallery>
+
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="pull-right">
+                <a href="mailto:katharina.matulla@tutanota.com">Contact</a>&nbsp;|&nbsp;2019
+            </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+</body>
+</html>
